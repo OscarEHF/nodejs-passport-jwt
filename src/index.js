@@ -1,4 +1,5 @@
 import app from './server.js';
+import './database.js';
 
 // Starting the server
 app
