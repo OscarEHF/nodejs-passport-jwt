@@ -2,7 +2,6 @@ import express from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
 import morgan from 'morgan';
-import responseTime from 'response-time';
 
 // Initializations
 const app = express();
@@ -11,10 +10,9 @@ const app = express();
 app.set('port', process.env.PORT || 3000);
 
 // Middlewares
-app.use(responseTime());
+app.use(morgan('dev'));
 app.use(helmet());
 app.use(cors());
-app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
