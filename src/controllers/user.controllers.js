@@ -7,7 +7,7 @@ export const createUser = async (req, res) => {
 
   if (!name) errors.push(({ message: 'Please insert your name.'}));
   if (!email) errors.push(({ message: 'Please insert your email.'}));
-  
+
   if (!password) {
     errors.push(({ message: 'Please insert your password.'}));
   } else if (password && password.length < 4) {
@@ -33,9 +33,17 @@ export const createUser = async (req, res) => {
 };
 
 export const getUsers = async (req, res) => {
-  res.send('Get All Users');
+  const users = await User.find();
+  console.log(req.url);
+  res.json(users);
 };
 
 export const getUser = async (req, res) => {
-  res.send('Get User');
+  try {
+    const { userId } = req.params;
+    const user = await User.findById(userId);
+    res.json(user);
+  } catch (error) {
+    res.json({});
+  }
 };
