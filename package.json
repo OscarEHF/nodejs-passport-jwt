@@ -5,7 +5,8 @@
   "description": "Basic authentication implementation with Passport and JWT on a Node.js REST API.",
   "main": "src/index.js",
   "scripts": {
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "start": "node index.js"
   },
   "keywords": [
     "nodejs",
@@ -23,6 +24,7 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "helmet": "^4.6.0",
     "jsonwebtoken": "^8.5.1",
@@ -33,7 +35,6 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
-    "dotenv": "^10.0.0",
     "nodemon": "^2.0.13"
   }
 }
