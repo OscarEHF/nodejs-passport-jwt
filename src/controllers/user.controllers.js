@@ -7,14 +7,14 @@ export const createUser = async (req, res) => {
 
   if (!name) errors.push(({ message: 'Please insert your name.'}));
   if (!email) errors.push(({ message: 'Please insert your email.'}));
-  if (!password) errors.push(({ message: 'Please insert your password.'}));
   
-  if (!confirm_password) errors.push(({ message: 'Please confirm your password.'}));
-  else if (!password && password.length < 4) {
-    errors.push(({ message: 'Password must be at least 4 characters.'}));
-  }
-  
-  if (password && confirm_password && password !== confirm_password) {
+  if (!password) {
+    errors.push(({ message: 'Please insert your password.'}));
+  } else if (password && password.length < 4) {
+    errors.push(({ message: 'Password must be at least 4 characters.' }));
+  } else if (!confirm_password) {
+    errors.push(({ message: 'Please confirm your password.'}));
+  } else if (password && confirm_password && password !== confirm_password) {
     errors.push(({ message: 'Password do not match.'}));
   }
 
