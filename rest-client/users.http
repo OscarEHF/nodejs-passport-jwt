@@ -1,0 +1,10 @@
+@myApi = http://localhost:3000
+
+### New User
+POST {{myApi}}/users/
+
+### Get All Users
+GET {{myApi}}/users/
+
+### Get User
+GET {{myApi}}/users/1

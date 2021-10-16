@@ -1,0 +1,7 @@
+@myApi = http://localhost:3000
+
+### Sign Up
+POST {{myApi}}/auth/signup
+
+### Sign In
+POST {{myApi}}/auth/signin

@@ -3,6 +3,10 @@ import helmet from 'helmet';
 import cors from 'cors';
 import morgan from 'morgan';
 
+import authRoutes from "./routes/auth.routes.js";
+import productsRoutes from "./routes/products.routes.js";
+import userRoutes from "./routes/user.routes.js";
+
 // Initializations
 const app = express();
 
@@ -17,9 +21,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Routes
-app.get('/', (req, res) => {
-  res.send('Hello World! :D');
-});
+app.use('/auth', authRoutes);
+app.use('/products', productsRoutes);
+app.use('/users', userRoutes);
+
 
 // 404 handler
 app.use((req, res) => {
