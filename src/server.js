@@ -2,10 +2,13 @@ import express from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
 import morgan from 'morgan';
+import passport from 'passport';
 
 import authRoutes from "./routes/auth.routes.js";
 import productsRoutes from "./routes/products.routes.js";
 import userRoutes from "./routes/user.routes.js";
+
+import "./libs/auth/local.strategy.js";
 
 // Initializations
 const app = express();
@@ -17,6 +20,7 @@ app.set('port', process.env.PORT || 3000);
 app.use(morgan('dev'));
 app.use(helmet());
 app.use(cors());
+app.use(passport.initialize());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 

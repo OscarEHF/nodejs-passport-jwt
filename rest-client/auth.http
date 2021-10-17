@@ -5,3 +5,9 @@ POST {{myApi}}/auth/signup
 
 ### Sign In
 POST {{myApi}}/auth/signin
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "testpass123456"
+}
