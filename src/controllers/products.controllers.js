@@ -20,11 +20,11 @@ export const createProduct = async (req, res) => {
   try {
     const newProduct = new Product({ name, category, price, imgURL });
     const savedProduct = await newProduct.save();
-    if (!savedProduct) return res.json({ message: 'Something went wrong.' });
+    if (!savedProduct) return res.status(500).json({ error: 'Something went wrong.' });
     res.status(201).json(savedProduct);
   } catch (error) {
     console.log(error.stack);
-    return res.json({ message: 'Something went wrong.'});
+    return res.status(500).json({ error: 'Something went wrong.' });
   }
 };
 
@@ -35,7 +35,7 @@ export const getProducts = async (req, res) => {
     else res.json(products);
   } catch (error) {
     console.log(error.stack);
-    return res.json({ message: 'Something went wrong.' });
+    return res.status(500).json({ error: 'Something went wrong.' });
   }
 };
 
@@ -47,7 +47,7 @@ export const getProduct = async (req, res) => {
     else return res.json(product);
   } catch (error) {
     console.log(error.stack);
-    return res.json({ message: 'Something went wrong.' });
+    return res.status(500).json({ error: 'Something went wrong.' });
   }
 };
 
@@ -60,7 +60,7 @@ export const updateProduct = async (req, res) => {
     return res.json(updatedProduct);
   } catch (error) {
     console.log(error.stack);
-    return res.json({ message: 'Something went wrong.' });
+    return res.status(500).json({ error: 'Something went wrong.' });
   }
 };
 
@@ -71,6 +71,6 @@ export const deleteProduct = async (req, res) => {
     return res.json(deletedProduct);
   } catch (error) {
     console.log(error.stack);
-    return res.json({ message: 'Something went wrong.' });
+    return res.status(500).json({ error: 'Something went wrong.' });
   }
 };
