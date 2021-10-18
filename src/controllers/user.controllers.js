@@ -36,6 +36,14 @@ export const getUsers = async (req, res) => {
   const users = await User.find();
   console.log(req.url);
   res.json(users);
+  try {
+    const users = await User.find();
+    if (!users) return res.json([]);
+    else res.json(users);
+  } catch (error) {
+    console.log(error.stack);
+    return res.status(500).json({ error: 'Something went wrong.' });
+  }
 };
 
 export const getUser = async (req, res) => {
@@ -43,7 +51,11 @@ export const getUser = async (req, res) => {
     const { userId } = req.params;
     const user = await User.findById(userId);
     res.json(user);
+    if (!user) return res.json({});
+    else return res.json(user);
   } catch (error) {
     res.json({});
+    console.log(error.stack);
+    return res.status(500).json({ error: 'Something went wrong.' });
   }
 };
