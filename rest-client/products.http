@@ -2,15 +2,29 @@
 
 ### New Product
 POST {{myApi}}/products/
+Content-Type: application/json
+
+{
+  "name": "Laptop Lenovo",
+  "category": "Laptops",
+  "price": 999.99,
+  "imgURL": "https://infotec.com.pe/40578-large_default/laptop-lenovo-v14-iil-i5-1035g1-8gb-1tb-14-hd-freedos-82c400eelm.jpg"
+}
 
 ### Get All Products
 GET {{myApi}}/products/
 
 ### Get Product
-GET {{myApi}}/products/1
+GET {{myApi}}/products/616cb7a863f90faecac252d3
 
 ### Update Product
-PUT {{myApi}}/products/2
+PUT {{myApi}}/products/616cb7a863f90faecac252d3
+Content-Type: application/json
+
+{
+  "name": "Laptop Lenovo Thinkpad T400",
+  "price": 899.99
+}
 
 ### Delete Product
-DELETE {{myApi}}/products/3
+DELETE {{myApi}}/products/616cb75ef87bbda666a47bd2
