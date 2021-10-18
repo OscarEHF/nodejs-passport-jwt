@@ -1,5 +1,6 @@
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
+import jwt from 'jsonwebtoken';
 
 import User from "../../models/User.js";
 
@@ -12,7 +13,9 @@ const opts = {
 passport.use(
   new LocalStrategy(opts, async (req, email, password, done) => {
     try {
-      const user = await User.findOne({ email });
+      const user = await User.findOne({ email }).populate('role');
+
+      console.log(user);
 
       if (!user) return done(null, false, { message: 'Not user found.' });
       else if (!await user.comparePassword(password)) {

@@ -16,8 +16,16 @@ const User = new Schema({
   password: {
     type: String,
     required: true
+  },
+  role: {
+    type: Schema.Types.ObjectId,
+    ref: 'roles',
   }
-}, { timestamps: true });
+}, {
+  timestamps: true,
+  versionKey: false,
+  strict: false
+});
 
 User.methods.encryptPassword = async (password) => {
   return await bcrypt.hash(password, 10);
