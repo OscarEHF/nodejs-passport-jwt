@@ -13,4 +13,7 @@ const opts = {
   secretOrKey: config.JWT_SECRET_KEY
 }
 
-passport.use(new JWTStrategy(opts, async (payload, done) => done(null, payload)));
+passport.use(new JWTStrategy(opts, async (payload, done) => {
+  if(!payload) return done(null, false);
+  return done(null, payload);
+}));

@@ -1,4 +1,7 @@
 import { Router } from "express";
+import passport from "passport";
+
+import { isAdmin } from '../controllers/auth.controllers.js';
 
 import {
   createUser,
@@ -9,7 +12,12 @@ import {
 const router = Router();
 
 // New User
-router.post('/', createUser);
+router.post(
+  '/',
+  passport.authenticate('jwt', { session: false }),
+  isAdmin,
+  createUser
+);
 
 // Get Users
 router.get('/', getUsers);

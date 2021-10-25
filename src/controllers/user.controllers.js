@@ -1,8 +1,9 @@
+import Role from '../models/Role.js';
 import User from '../models/User.js';
 
 export const createUser = async (req, res) => {
 
-  const { name, email, password, confirm_password } = req.body;
+  const { name, email, password, confirm_password, role } = req.body;
   const errors = [];
 
   if (!name) errors.push(({ message: 'Please insert your name.'}));
@@ -24,10 +25,15 @@ export const createUser = async (req, res) => {
   
   if (emailUser) return res.status(500).json({ error: 'The email is already in use' });
   else {
-    const newUser = new User({ name, email, password });
-    newUser.password = await newUser.encryptPassword(password);
-    await newUser.save();
-    return res.json({ errors, name, email });
+    const roleUser = await Role.findById(role);
+    if(roleUser) {
+      const newUser = new User({ name, email, password, role });
+      newUser.password = await newUser.encryptPassword(password);
+      await newUser.save();
+      return res.json({ errors, name, email });
+    } else {
+      return res.status(500).json({ error: 'Role not found' });
+    }
   }
 
 };
