@@ -7,7 +7,7 @@ export const createProduct = async (req, res) => {
   if (!name) errors.push(({ message: 'Please insert a name.' }));
   if (!category) errors.push(({ message: 'Please insert a category.' }));
   if (!price) errors.push(({ message: 'Please insert a price.' }));
-  if (!img) errors.push(({ message: 'Please insert an image.' }));
+  if (!imgURL) errors.push(({ message: 'Please insert an image.' }));
   
   if (errors.length > 0) return res.json({
     errors,
@@ -21,7 +21,7 @@ export const createProduct = async (req, res) => {
     const newProduct = new Product({ name, category, price, imgURL });
     const savedProduct = await newProduct.save();
     if (!savedProduct) return res.status(500).json({ error: 'Something went wrong.' });
-    res.status(201).json(savedProduct);
+    return res.status(201).json(savedProduct);
   } catch (error) {
     console.log(error.stack);
     return res.status(500).json({ error: 'Something went wrong.' });

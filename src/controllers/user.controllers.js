@@ -33,11 +33,8 @@ export const createUser = async (req, res) => {
 };
 
 export const getUsers = async (req, res) => {
-  const users = await User.find();
-  console.log(req.url);
-  res.json(users);
   try {
-    const users = await User.find();
+    const users = await User.find().populate('role');
     if (!users) return res.json([]);
     else res.json(users);
   } catch (error) {
@@ -49,12 +46,10 @@ export const getUsers = async (req, res) => {
 export const getUser = async (req, res) => {
   try {
     const { userId } = req.params;
-    const user = await User.findById(userId);
-    res.json(user);
+    const user = await User.findById(userId).populate('role');
     if (!user) return res.json({});
     else return res.json(user);
   } catch (error) {
-    res.json({});
     console.log(error.stack);
     return res.status(500).json({ error: 'Something went wrong.' });
   }

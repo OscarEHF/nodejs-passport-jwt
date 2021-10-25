@@ -56,20 +56,21 @@ export const signIn = async (req, res) => {
 };
 
 export const isModerator = async (req, res, next) => {
-  const id = req.token.id;
+  const id = req.user.id;
   const user = await User.findById(id);
   const role = await Role.findById(user.role);
-  if (!role.name === 'Moderator') {
+  if (role.name === 'Moderator' || role.name === 'Admin') {
+    next();
+  } else {
     return res.status(403).json({ message: 'Require moderator role' });
   }
-  next();
 }
 
 export const isAdmin = async (req, res, next) => {
-  const id = req.token.id;
+  const id = req.user.id;
   const user = await User.findById(id);
   const role = await Role.findById(user.role);
-  if (!role.name === 'Admin') {
+  if (role.name !== 'Admin') {
     return res.status(403).json({ message: 'Require admin role' });
   }
   next();

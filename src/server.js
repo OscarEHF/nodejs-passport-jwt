@@ -9,6 +9,7 @@ import productsRoutes from "./routes/products.routes.js";
 import userRoutes from "./routes/user.routes.js";
 
 import "./libs/auth/local.strategy.js";
+import "./libs/auth/jwt.strategy.js";
 
 // Initializations
 const app = express();

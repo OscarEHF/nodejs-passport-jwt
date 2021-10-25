@@ -3,6 +3,7 @@
 ### New Product
 POST {{myApi}}/products/
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNmUxMTA4NDUyZjRjMTZhYmI2NTk1MSIsImlhdCI6MTYzNDYwNTQ4MywiZXhwIjoxNjM0NjkxODgzfQ.WKLsl9wd0ON6w-ILRonGKg7sq_pGjlVhUU3K0OHRDxU
 
 {
   "name": "Laptop Lenovo",
@@ -15,11 +16,12 @@ Content-Type: application/json
 GET {{myApi}}/products/
 
 ### Get Product
-GET {{myApi}}/products/616cb7a863f90faecac252d3
+GET {{myApi}}/products/616e16fcf8ca5bfa6a119a18
 
 ### Update Product
-PUT {{myApi}}/products/616cb7a863f90faecac252d3
+PUT {{myApi}}/products/616e16fcf8ca5bfa6a119a18
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNmUxODA2ZWVkNDRhODQzNjRmOGY2YSIsImlhdCI6MTYzNDYwNTU1MywiZXhwIjoxNjM0NjkxOTUzfQ.FsljfxX8V8rxG5bIvw4U0VKqFAz3gEczYAE0svlojGQ
 
 {
   "name": "Laptop Lenovo Thinkpad T400",
@@ -27,4 +29,6 @@ Content-Type: application/json
 }
 
 ### Delete Product
-DELETE {{myApi}}/products/616cb75ef87bbda666a47bd2
+DELETE {{myApi}}/products/616e16fcf8ca5bfa6a119a18
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNmUxODA2ZWVkNDRhODQzNjRmOGY2YSIsImlhdCI6MTYzNDYwNTU1MywiZXhwIjoxNjM0NjkxOTUzfQ.FsljfxX8V8rxG5bIvw4U0VKqFAz3gEczYAE0svlojGQ
+

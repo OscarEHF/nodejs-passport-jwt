@@ -1,18 +1,7 @@
 @myApi = http://localhost:4000
 
-### New User
-POST {{myApi}}/users/
-Content-Type: application/json
-
-{
-  "name": "Test name",
-  "email": "test@example.com",
-  "password": "testpass123456",
-  "confirm_password": "testpass123456"
-}
-
 ### Get All Users
 GET {{myApi}}/users/
 
 ### Get User
-GET {{myApi}}/users/1
+GET {{myApi}}/users/616e1806eed44a84364f8f6a
