@@ -14,8 +14,6 @@ passport.use(
     try {
       const user = await User.findOne({ email }).populate('role');
 
-      console.log(user);
-
       if (!user) return done(null, false, { message: 'Not user found.' });
       else if (!await user.comparePassword(password)) {
         return done(null, false, { message: 'Incorrect email or password.' });
